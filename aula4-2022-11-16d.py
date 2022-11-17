@@ -7,7 +7,7 @@ nome_civil = input("Informe o nome civil do herói/vilão(sua identidade secreta
 tipo_numerico = input("Tecle 1 para Herói(na) ou 2 para vilã(o)")
 
 #Consulta para o valor máximo usado no banco
-sql = "SELECT MAX(pessoa_id)+1 FROM pessoas"
+sql = "SELECT MAX (pessoa_id)+1 FROM pessoas"
 cursor.execute(sql)
 pessoa_id = cursor.fetchone()[0]
 
@@ -16,8 +16,12 @@ if tipo_numerico == "1":
 else:
   tipo = "Vilã(o)"
 
-sql = f"INSERT INTO pessoa (pessoa_id, nome, nome_civil, tipo) VALUES('{pessoa_id}', '{nome}', '{nome_civil}', '{tipo}')"
+sql = f"INSERT INTO pessoa (pessoa_id, nome, nome_civil, tipo) VALUES ({pessoa_id}, '{nome}', '{nome_civil}', '{tipo}')"
 
 cursor.execute(sql)
+
+#inserir pessoas_grupo
+#insert into pessoas_grupos (pessoa_id, grupo_id) values (X, X)
+
 conexao.commit()
 conexao.close()
